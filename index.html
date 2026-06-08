@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>document.documentElement.className+=' js';</script>
+<title>כשאין לי מילים · בונוס מאת רותם כהני</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FBF6EA;
+  --cream-deep:#F4ECDA;
+  --sage:#A8B8A0;
+  --sage-soft:#C3CFBC;
+  --sage-deep:#5E6E56;
+  --sage-ink:#46543F;
+  --mist:#ECEFE7;
+  --peach:#FCE2C1;
+  --peach-soft:#FBEBD6;
+  --gold:#C2A36B;
+  --ink:#3D3A33;
+  --ink-soft:#6B675D;
+  --paper:#FFFDF8;
+  --line:#E2DCCB;
+  --font-body:'Assistant',system-ui,sans-serif;
+  --font-display:'Assistant',system-ui,sans-serif;
+  --maxw:740px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  color:var(--ink);
+  background:var(--cream);
+  font-size:clamp(17px,1.05vw + 13px,19px);
+  line-height:1.85;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 26px}
+
+/* ---------- top progress ---------- */
+.topbar{position:fixed;top:0;right:0;left:0;height:3px;z-index:60;background:transparent}
+.topbar__fill{height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--sage));transition:width .12s linear}
+
+/* ---------- side dot nav ---------- */
+.dotnav{position:fixed;top:50%;right:24px;transform:translateY(-50%);z-index:55;display:flex;flex-direction:column;gap:14px}
+.dotnav a{position:relative;width:11px;height:11px;border-radius:50%;border:1.5px solid var(--sage);background:transparent;transition:.25s;display:block}
+.dotnav a:hover,.dotnav a.active{background:var(--sage);transform:scale(1.25)}
+.dotnav a span{position:absolute;right:22px;top:50%;transform:translateY(-50%);white-space:nowrap;font-size:13px;color:var(--sage-deep);background:var(--paper);padding:3px 11px;border-radius:30px;border:1px solid var(--line);opacity:0;pointer-events:none;transition:.25s;box-shadow:0 4px 14px rgba(94,110,86,.12)}
+.dotnav a:hover span{opacity:1}
+@media(max-width:1080px){.dotnav{display:none}}
+
+/* ---------- decorative ---------- */
+.sun{display:block;color:var(--gold)}
+.leaf-corner{position:absolute;pointer-events:none;opacity:.5;color:var(--sage)}
+
+/* ---------- cover ---------- */
+.cover{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;padding:90px 26px 70px;overflow:hidden}
+.cover__brand{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;white-space:nowrap;font-size:14px;letter-spacing:.16em;color:var(--sage-deep);text-transform:uppercase;margin-bottom:6vh;font-weight:500}
+.cover__brand b{font-family:var(--font-display);font-weight:700;letter-spacing:.02em;text-transform:none;font-size:18px;color:var(--sage-ink)}
+.cover__sunmark{margin-bottom:30px}
+.eyebrow{font-size:15px;letter-spacing:.14em;color:var(--gold);font-weight:600;margin-bottom:18px}
+.cover__title{font-family:var(--font-display);font-weight:800;font-size:clamp(44px,10.5vw,82px);line-height:1.08;color:var(--sage-ink);margin-bottom:26px;letter-spacing:-.005em}
+.cover__sub{font-size:clamp(19px,2.6vw,24px);color:var(--ink);max-width:18ch;line-height:1.5;font-weight:400;margin-bottom:30px;text-wrap:balance}
+.cover__note{font-size:16px;color:var(--ink-soft);max-width:30ch;line-height:1.7;margin-bottom:7vh;text-wrap:pretty}
+.cover__by{font-size:15px;color:var(--sage-deep)}
+.cover__by b{font-weight:600;color:var(--sage-ink)}
+.cover__by span{display:block;font-size:13px;color:var(--ink-soft);margin-top:2px}
+.scrollcue{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);color:var(--sage);animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* ---------- section = page ---------- */
+section.chap{padding:clamp(54px,8vh,92px) 0;position:relative}
+.chap>*{position:relative;z-index:1}
+.chap--alt::before{content:"";position:absolute;z-index:0;top:0;bottom:0;left:50%;transform:translateX(-50%);width:100vw;background:var(--cream-deep)}
+.chap__num{display:flex;align-items:baseline;gap:13px;font-size:14px;letter-spacing:.14em;color:var(--gold);font-weight:600;margin-bottom:16px}
+.pageno{font-family:var(--font-display);font-weight:800;font-size:clamp(32px,5.5vw,50px);color:var(--sage-soft);line-height:.85;letter-spacing:0}
+.chap__title{font-family:var(--font-display);font-weight:800;font-size:clamp(29px,4.8vw,42px);line-height:1.2;color:var(--sage-ink);margin-bottom:28px;text-wrap:balance}
+.lead{font-size:clamp(18px,2vw,21px);color:var(--ink);line-height:1.8;margin-bottom:22px;text-wrap:pretty}
+p.body{margin-bottom:18px;text-wrap:pretty}
+.muted{color:var(--ink-soft)}
+.divider{display:flex;align-items:center;justify-content:center;gap:14px;padding:2vh 0;color:var(--sage-soft)}
+.divider::before,.divider::after{content:"";height:1px;width:54px;background:var(--line)}
+
+/* trigger list */
+.triggers{list-style:none;display:flex;flex-direction:column;gap:2px;margin:6px 0 30px;border-right:2px solid var(--sage-soft);padding-right:22px}
+.triggers li{font-family:var(--font-display);font-size:clamp(20px,3vw,26px);color:var(--sage-deep);line-height:1.6}
+
+/* soft / compassion box */
+.box{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:30px 32px;margin:26px 0;box-shadow:0 14px 40px rgba(94,110,86,.06)}
+.box--mist{background:var(--mist);border-color:#dde2d6}
+.box--peach{background:var(--peach-soft);border-color:#f1dcbf}
+.box--sage{background:var(--sage);border:none;color:#fff}
+.box__label{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:12px}
+.box--sage .box__label{color:rgba(255,255,255,.85)}
+.box p{text-wrap:pretty}
+.box--peach .big,.box--mist .big{font-family:var(--font-display);font-size:clamp(20px,3vw,25px);line-height:1.5;color:var(--sage-ink)}
+.box--sage .big{font-family:var(--font-display);font-size:clamp(22px,3.4vw,28px);line-height:1.45}
+
+/* checklist */
+.check{list-style:none;display:flex;flex-direction:column;gap:4px;margin-top:4px}
+.check li{margin:0}
+.check label{display:flex;align-items:flex-start;gap:14px;cursor:pointer;padding:13px 16px;border-radius:14px;transition:background .2s;font-size:clamp(17px,2vw,19px);line-height:1.5}
+.check label:hover{background:var(--mist)}
+.check input{position:absolute;opacity:0;width:0;height:0}
+.check .tick{flex:0 0 auto;width:26px;height:26px;border-radius:8px;border:2px solid var(--sage);display:grid;place-items:center;margin-top:1px;transition:.2s;background:var(--paper)}
+.check .tick svg{width:15px;height:15px;color:#fff;opacity:0;transform:scale(.5);transition:.2s}
+.check input:checked + .tick{background:var(--sage);border-color:var(--sage)}
+.check input:checked + .tick svg{opacity:1;transform:scale(1)}
+.check input:checked ~ .ctext{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--sage-soft)}
+
+/* quote / sentence cards */
+.cards{display:flex;flex-direction:column;gap:14px;margin:22px 0}
+.scard{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:22px 26px;position:relative;font-family:var(--font-display);font-size:clamp(18px,2.4vw,22px);line-height:1.55;color:var(--sage-ink)}
+.scard::before{content:"”";position:absolute;top:6px;right:18px;font-family:var(--font-display);font-size:46px;color:var(--sage-soft);line-height:1}
+.scard span{display:block;padding-right:30px}
+
+/* formula cards */
+.formula{display:flex;flex-direction:column;gap:16px;margin:28px 0}
+.fcard{background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:26px 30px;display:flex;gap:22px;align-items:flex-start;box-shadow:0 10px 30px rgba(94,110,86,.05)}
+.fcard__k{flex:0 0 auto;width:64px;height:64px;border-radius:50%;display:grid;place-items:center;font-family:var(--font-display);font-size:22px;color:#fff;background:var(--sage)}
+.fcard:nth-child(2) .fcard__k{background:var(--sage-deep)}
+.fcard:nth-child(3) .fcard__k{background:var(--gold)}
+.fcard__b h4{font-family:var(--font-display);font-weight:800;font-size:clamp(20px,2.6vw,24px);color:var(--sage-ink);margin-bottom:4px}
+.fcard__b p{font-size:16.5px;color:var(--ink-soft);line-height:1.6}
+
+/* exercise */
+.exercise{background:var(--mist);border-radius:22px;padding:30px 30px 34px;margin:30px 0}
+.exercise__head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.exercise__head h4{font-family:var(--font-display);font-size:clamp(20px,2.6vw,24px);color:var(--sage-ink);font-weight:800}
+.exercise__sub{color:var(--ink-soft);font-size:16px;margin-bottom:20px}
+.field{margin-bottom:18px}
+.field label{display:block;font-weight:600;color:var(--sage-deep);margin-bottom:7px;font-size:16px}
+.field textarea{width:100%;border:1px solid var(--line);border-radius:13px;background:var(--paper);padding:14px 16px;font-family:var(--font-body);font-size:17px;color:var(--ink);line-height:1.6;resize:vertical;min-height:62px;transition:.2s}
+.field textarea:focus{outline:none;border-color:var(--sage);box-shadow:0 0 0 3px rgba(168,184,160,.25)}
+.field textarea::placeholder{color:#b3ab98}
+.saved-note{font-size:13.5px;color:var(--sage-deep);display:flex;align-items:center;gap:6px;opacity:0;transition:.3s}
+.saved-note.show{opacity:1}
+.ex-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:8px;min-height:24px}
+.ex-actions{display:flex;gap:10px;flex-wrap:wrap}
+.ex-btn{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;border:none;cursor:pointer;font-family:var(--font-body);font-weight:700;font-size:15px;padding:11px 18px;border-radius:30px;background:var(--sage-ink);color:#fff;transition:.2s}
+.ex-btn:hover{background:var(--sage-deep)}
+.ex-btn--ghost{background:transparent;color:var(--sage-deep);border:1.5px solid var(--sage)}
+.ex-btn--ghost:hover{background:var(--paper);color:var(--sage-ink)}
+.ex-hint{font-size:13.5px;color:var(--ink-soft);margin-top:14px;line-height:1.55}
+.ex-hint b{color:var(--sage-deep);font-weight:700}
+
+/* accordion */
+.acc{display:flex;flex-direction:column;gap:14px;margin:26px 0}
+.acc__item{border:1px solid var(--line);border-radius:18px;background:var(--paper);overflow:hidden;transition:box-shadow .25s}
+.acc__item.open{box-shadow:0 14px 38px rgba(94,110,86,.09)}
+.acc__btn{width:100%;text-align:right;background:none;border:none;cursor:pointer;padding:22px 26px;display:flex;align-items:center;gap:16px;font-family:var(--font-body)}
+.acc__tag{flex:0 0 auto;font-size:13px;letter-spacing:.08em;color:var(--gold);font-weight:600;text-transform:uppercase}
+.acc__btn h4{flex:1;font-family:var(--font-display);font-weight:700;font-size:clamp(18px,2.3vw,22px);color:var(--sage-ink);text-align:right}
+.acc__chev{flex:0 0 auto;color:var(--sage);transition:transform .3s}
+.acc__item.open .acc__chev{transform:rotate(180deg)}
+.acc__panel{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.acc__inner{padding:0 26px 26px}
+.acc__inner .qline{font-family:var(--font-display);font-size:clamp(17px,2.2vw,20px);color:var(--ink);line-height:1.7;border-right:3px solid var(--sage-soft);padding-right:18px;margin-bottom:18px;white-space:pre-line}
+.acc__short{background:var(--mist);border-radius:13px;padding:16px 20px;font-size:16.5px;color:var(--sage-deep);line-height:1.6}
+.acc__short b{display:block;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:6px;font-weight:600}
+
+/* shelf (sticky reference) */
+.shelf{background:var(--sage-ink);color:#fff;border-radius:28px;padding:clamp(30px,5vw,52px);margin:34px 0;position:relative;overflow:hidden}
+.shelf__eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--sage-soft);margin-bottom:8px}
+.shelf__title{font-family:var(--font-display);font-weight:800;font-size:clamp(26px,4.5vw,38px);margin-bottom:30px;line-height:1.2}
+.shelf__grid{display:flex;flex-direction:column;gap:22px}
+.shelf__block{border-right:2px solid rgba(255,255,255,.25);padding-right:20px}
+.shelf__block h5{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--peach);margin-bottom:10px;font-weight:600}
+.shelf__block p{color:rgba(255,255,255,.92);line-height:1.7;font-size:16.5px}
+.shelf__block .q{font-family:var(--font-display);font-size:clamp(17px,2.4vw,20px);color:#fff;margin-bottom:6px}
+.shelf__levels{display:flex;flex-direction:column;gap:14px}
+.lvl{display:flex;gap:14px;align-items:flex-start}
+.lvl b{flex:0 0 auto;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--peach);width:54px;padding-top:3px}
+.lvl p{flex:1;color:rgba(255,255,255,.92);line-height:1.65;font-size:16px}
+
+/* audio card */
+.audio{display:flex;gap:24px;align-items:center;background:var(--peach-soft);border:1px solid #f1dcbf;border-radius:22px;padding:28px 30px;margin:30px 0;flex-wrap:wrap}
+.audio__icon{flex:0 0 auto;width:66px;height:66px;border-radius:50%;background:var(--gold);display:grid;place-items:center;color:#fff}
+.audio__b{flex:1;min-width:200px}
+.audio__b .label{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:4px}
+.audio__b h4{font-family:var(--font-display);font-size:clamp(19px,2.6vw,23px);color:var(--sage-ink);margin-bottom:8px;font-weight:800}
+.audio__b p{font-size:16px;color:var(--ink-soft);line-height:1.6}
+.audio__btn{flex:0 0 auto;display:inline-flex;align-items:center;gap:9px;background:var(--sage-ink);color:#fff;border:none;border-radius:40px;padding:14px 26px;font-family:var(--font-body);font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;transition:.2s}
+.audio__btn:hover{background:var(--sage-deep)}
+
+/* closing */
+.closing{text-align:center;padding:clamp(60px,9vh,104px) 0;position:relative}
+.closing .vs{display:flex;flex-direction:column;gap:18px;max-width:24ch;margin:0 auto 40px}
+.vs__row{padding:18px 22px;border-radius:16px;font-family:var(--font-display);font-size:clamp(18px,2.6vw,22px);line-height:1.5}
+.vs__row.bad{background:var(--cream-deep);color:var(--ink-soft)}
+.vs__row.bad .tagm{color:#b09a6f}
+.vs__row.good{background:var(--sage);color:#fff}
+.vs__row .tagm{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;font-family:var(--font-body);font-weight:600}
+.vs__row.good .tagm{color:rgba(255,255,255,.8)}
+.closing__final{font-family:var(--font-display);font-weight:800;font-size:clamp(19px,3.2vw,25px);line-height:1.32;color:var(--sage-ink);margin:0 auto;max-width:100%}
+.closing__sig{margin-top:46px;color:var(--sage-deep);font-size:15px}
+.closing__sig b{font-weight:600;color:var(--sage-ink)}
+
+/* reveal animation */
+/* reveal: visible by default; gentle entrance only where motion is allowed */
+.reveal{opacity:1;transform:none}
+@media(prefers-reduced-motion:no-preference){
+  html.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.3,1)}
+  html.js .reveal.in{opacity:1;transform:none}
+}
+@media(prefers-reduced-motion:reduce){.scrollcue{animation:none}}
+
+/* ---------- botanicals (watercolor brand art) ---------- */
+.bot{position:absolute;pointer-events:none;user-select:none;z-index:0}
+.cover>:not(.bot){position:relative;z-index:2}
+.bot--cover-tr{top:-26px;right:-44px;width:min(42vw,310px)}
+.bot--cover-bl{bottom:-30px;left:-40px;width:min(34vw,250px)}
+.side-bot{position:absolute;z-index:0;pointer-events:none;width:150px;opacity:.78;top:50%;transform:translateY(-50%)}
+.sb-why{left:-168px}
+.sb-formula{right:-172px;width:158px;transform:translateY(-50%) scaleX(-1)}
+.sb-examples{left:-166px;width:142px}
+.sb-nowords{right:-160px;width:132px;transform:translateY(-50%) scaleX(-1)}
+.sb-shelf{left:-170px;width:150px}
+@media(max-width:1080px){.side-bot{display:none}}
+@media(max-width:600px){.bot--cover-tr{width:46vw;top:-12px;right:-26px}.bot--cover-bl{width:40vw;bottom:-12px;left:-22px}}
+
+/* emphasis (brand-language, no marker) */
+mark{background:transparent;color:inherit}
+.hl,.hl--sage{font-weight:600;color:inherit;background:transparent}
+.em{font-weight:700;color:inherit}
+
+/* pull quote / inverted-triangle statement */
+.pullquote{text-align:center;padding:clamp(66px,9vh,104px) 24px;position:relative;overflow:hidden}
+.pullquote>*{position:relative;z-index:1}
+.pullquote::before{content:"";position:absolute;z-index:0;top:0;bottom:0;left:50%;transform:translateX(-50%);width:100vw;background:#DCE4D3}
+.pullquote__anchor{display:block;width:46px;height:auto;color:var(--sage-deep);margin:0 auto 26px}
+@media(prefers-reduced-motion:no-preference){.pullquote__anchor{animation:anchor-sway 4.6s ease-in-out infinite;transform-origin:50% 14%}}
+@keyframes anchor-sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+.pq-bot{position:absolute;z-index:1;opacity:.6;width:128px;pointer-events:none}
+.pq-bot--a{top:20px;right:4%;transform:scaleX(-1)}
+.pq-bot--b{bottom:20px;left:4%}
+@media(max-width:600px){.pq-bot{width:86px;opacity:.5}}
+.tri,.pullquote p{font-family:var(--font-display);font-weight:800;font-size:clamp(21px,3.6vw,29px);line-height:1.32;color:var(--sage-ink);margin:0 auto;max-width:100%}
+.tri{display:block}
+.mark{color:inherit;font-weight:inherit}
+
+/* card micro-interactions */
+.scard,.fcard{transition:transform .28s ease,box-shadow .28s ease,border-color .28s ease}
+.scard:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(94,110,86,.14);border-color:var(--sage-soft)}
+.fcard:hover{transform:translateY(-3px);box-shadow:0 22px 46px rgba(94,110,86,.13)}
+
+/* formula badge pop-in */
+@media(prefers-reduced-motion:no-preference){
+  html.js .formula.reveal .fcard__k{transform:scale(.55);opacity:0;transition:transform .55s cubic-bezier(.2,.8,.3,1.25) .15s,opacity .4s ease .15s}
+  html.js .formula.reveal.in .fcard__k{transform:scale(1);opacity:1}
+  html.js .formula.reveal.in .fcard:nth-child(2) .fcard__k{transition-delay:.28s}
+  html.js .formula.reveal.in .fcard:nth-child(3) .fcard__k{transition-delay:.41s}
+}
+
+@media(max-width:560px){
+  .wrap{padding:0 20px}
+  .box{padding:24px 22px;border-radius:18px}
+  .fcard{padding:22px;gap:16px}
+  .fcard__k{width:54px;height:54px;font-size:19px}
+  .audio{padding:24px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="topbar__fill" id="progress"></div></div>
+
+<nav class="dotnav" id="dotnav" aria-label="ניווט פרקים">
+  <a href="#cover" data-label="פתיחה"><span>פתיחה</span></a>
+  <a href="#why" data-label="למה זה קשה"><span>למה זה קשה</span></a>
+  <a href="#pause" data-label="בדיקת 10 שניות"><span>בדיקת 10 שניות</span></a>
+  <a href="#formula" data-label="הנוסחה"><span>הנוסחה</span></a>
+  <a href="#examples" data-label="דוגמאות"><span>דוגמאות</span></a>
+  <a href="#nowords" data-label="כשאין מילים"><span>כשאין מילים</span></a>
+  <a href="#shelf" data-label="השליף"><span>השליף</span></a>
+  <a href="#close" data-label="סיום"><span>סיום</span></a>
+</nav>
+
+<!-- ============ COVER ============ -->
+<header class="cover" id="cover" data-screen-label="שער">
+  <img class="bot bot--cover-tr" src="assets/img/2.png" alt="" aria-hidden="true">
+  <img class="bot bot--cover-bl" src="assets/img/1.png" alt="" aria-hidden="true">
+
+  <div class="cover__brand reveal"><span>Anchor</span> · <b>שיטת ע.ו.ג.ן</b></div>
+
+  <svg class="sun cover__sunmark reveal" width="62" height="42" viewBox="0 0 62 42" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+    <line x1="31" y1="2" x2="31" y2="12"/>
+    <line x1="16" y1="6" x2="20" y2="14"/>
+    <line x1="46" y1="6" x2="42" y2="14"/>
+    <line x1="6" y1="17" x2="14" y2="21"/>
+    <line x1="56" y1="17" x2="48" y2="21"/>
+    <circle cx="31" cy="32" r="8"/>
+  </svg>
+
+  <div class="eyebrow reveal">בונוס #3</div>
+  <h1 class="cover__title reveal">כשאין לי מילים</h1>
+  <p class="cover__sub reveal">איך להגיד מה אני צריכה בזמן אמת</p>
+  <p class="cover__note reveal">בלי להתנצל, להיעלם או להתפוצץ.<br>תרגול קצר לתקשורת רגישה ברגעים של הצפה.</p>
+  <p class="cover__by reveal"><b>עם רותם כהני</b><span>פסיכולוגית קלינית</span></p>
+
+  <svg class="scrollcue" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ 1 · WHY ============ -->
+  <section class="chap chap--alt" id="why" data-screen-label="למה זה קשה">
+    <img class="side-bot sb-why" src="assets/img/5.png" alt="" aria-hidden="true">
+    <div class="chap__num reveal"><span class="pageno">01</span>פתח דבר</div>
+    <h2 class="chap__title reveal">למה ברגע האמת קשה למצוא מילים?</h2>
+    <p class="lead reveal">לא תמיד מדובר בדרמה גדולה. לפעמים זה רגע קטן שמפעיל משהו עמוק:</p>
+
+    <ul class="triggers reveal">
+      <li>שתיקה אחרי ששיתפת.</li>
+      <li>טון שמשהו בו צובט.</li>
+      <li>הודעה קצרה מדי.</li>
+      <li>חוסר בהירות שמציף.</li>
+      <li>עוד בקשה אחת, כשכבר אין מרחב.</li>
+    </ul>
+
+    <div class="box box--peach reveal">
+      <div class="box__label">רגע של חמלה</div>
+      <p class="big">זה לא כי את לא יודעת לתקשר.<br>זה כי מערכת העצבים שלך כבר מנסה להגן עלייך.</p>
+    </div>
+
+    <p class="body reveal">ובדיוק שם עולה הקונפליקט: מצד אחד את רוצה שיבינו אותך, ומצד שני לא רוצה להרגיש "יותר מדי", להצטדק, או לדבר על הרגישות שלך כאילו היא בעיה. אז לפעמים בולעים, מסבירים יותר מדי, מתנצלים עוד לפני שביקשנו, או מתפרצים.</p>
+    <p class="body reveal muted">הבונוס הזה הוא לא על "איך לדבר יפה". הוא על איך <mark class="hl">לתרגם את הרגישות שלך לשפה שאפשר לתקשר</mark>, בלי להצטמצם ובלי להתנצל.</p>
+  </section>
+
+  <div class="pullquote reveal">
+    <img class="pq-bot pq-bot--a" src="assets/img/3.png" alt="" aria-hidden="true">
+    <img class="pq-bot pq-bot--b" src="assets/img/5.png" alt="" aria-hidden="true">
+    <svg class="pullquote__anchor" viewBox="0 0 60 80" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <circle cx="30" cy="9" r="5"/>
+      <line x1="30" y1="14" x2="30" y2="63"/>
+      <line x1="18" y1="24" x2="42" y2="24"/>
+      <path d="M11 45 C11 64 30 67 30 67 C30 67 49 64 49 45"/>
+      <path d="M11 45 l-6 -1 M11 45 l4 -7"/>
+      <path d="M49 45 l6 -1 M49 45 l-4 -7"/>
+    </svg>
+    <p>הרגישות שלך לא צריכה להיעלם כדי שתהיי בקשר<br>לפעמים היא רק צריכה<br><span class="mark">תרגום</span>.</p>
+  </div>
+  <section class="chap chap--alt" id="pause" data-screen-label="בדיקת 10 שניות">
+    <div class="chap__num reveal"><span class="pageno">02</span>לפני המילים</div>
+    <h2 class="chap__title reveal">בדיקת 10 שניות</h2>
+    <p class="lead reveal">לפני הניסוח, לפני ההסבר, לפני הבקשה, אפשר לעצור לרגע קטן. לא להירגע לגמרי, רק לבדוק <mark class="hl--sage hl">מאיזה מקום אני עומדת לדבר</mark>.</p>
+
+    <div class="box box--mist reveal">
+      <div class="box__label">סמני לעצמך</div>
+      <ul class="check" data-store="check-pause">
+        <li><label><input type="checkbox" data-k="c1"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="ctext">מה קורה לי עכשיו?</span></label></li>
+        <li><label><input type="checkbox" data-k="c2"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="ctext">האם אני דרוכה, נסגרת, נעלבת או מתגוננת?</span></label></li>
+        <li><label><input type="checkbox" data-k="c3"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="ctext">האם אני מספיק כאן כדי לדבר עכשיו?</span></label></li>
+        <li><label><input type="checkbox" data-k="c4"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span><span class="ctext">מה יעזור לי לחזור טיפה לקרקע?</span></label></li>
+      </ul>
+    </div>
+
+    <p class="body reveal">לפעמים התשובה תהיה: <em>כן, אני יכולה לדבר עכשיו</em>, ואז נשתמש בנוסחה שתכף נלמד. ולפעמים: <em>עוד לא</em>. וזה לא אומר שנכשלת. זה אומר שהמערכת שלך צריכה קודם רגע של עוגן.</p>
+
+    <div class="box reveal">
+      <div class="box__label">אם עדיין אין מילים · משפט מעבר קטן</div>
+      <p class="muted" style="margin-bottom:14px">לא חייבים להסביר הכול עכשיו. אפשר רק להשאיר גשר:</p>
+      <div class="cards" style="margin:0">
+        <div class="scard"><span>אני מוצפת רגע, אבל אני לא מתעלמת. אני צריכה כמה דקות ואז אחזור לזה.</span></div>
+        <div class="scard"><span>משהו בי נסגר עכשיו, אבל חשוב לי לא להתרחק. אני צריכה רגע.</span></div>
+        <div class="scard"><span>אני שמה לב שאני מתחילה להתגונן, ואני לא רוצה לדבר מהמקום הזה. אפשר שנעצור ונחזור לזה עוד מעט?</span></div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- ============ 3 · FORMULA ============ -->
+  <section class="chap" id="formula" data-screen-label="הנוסחה">
+    <img class="side-bot sb-formula" src="assets/img/4.png" alt="" aria-hidden="true">
+    <div class="chap__num reveal"><span class="pageno">03</span>הלב של הבונוס</div>
+    <h2 class="chap__title reveal">הנוסחה: גם + גם + בקשה</h2>
+    <p class="lead reveal">כשיש קצת יותר קרקע, אפשר להשתמש ב<mark class="hl">נוסחה פשוטה</mark> שמחזיקה שלושה דברים יחד.</p>
+
+    <div class="formula reveal">
+      <div class="fcard">
+        <div class="fcard__k">גם</div>
+        <div class="fcard__b"><h4>מה קורה לי?</h4><p>מה אני מרגישה, קולטת, צריכה או חווה בפנים.</p></div>
+      </div>
+      <div class="fcard">
+        <div class="fcard__k">גם</div>
+        <div class="fcard__b"><h4>מה חשוב לי?</h4><p>מה חשוב לי לשמור, לאפשר או להביא: בקשר, בעבודה, בבית, או בערך שאני רוצה לחיות לפיו.</p></div>
+      </div>
+      <div class="fcard">
+        <div class="fcard__k">בקשה</div>
+        <div class="fcard__b"><h4>מה יעזור לי בפועל?</h4><p>משהו קטן, ברור, אפשרי ובר ביצוע.</p></div>
+      </div>
+    </div>
+
+    <p class="body reveal muted">כשאנחנו רק מסבירות את הקושי, הצד השני לא תמיד יודע מה לעשות. וכשאנחנו רק מבקשות, בלי הקשר, זה יכול להישמע פתאומי. הנוסחה מחברת בין החוויה הפנימית, הכוונה הטובה והבקשה הפרקטית.</p>
+
+    <div class="exercise reveal">
+      <div class="exercise__head">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.8" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+        <h4>נסי בעצמך</h4>
+      </div>
+      <p class="exercise__sub">חשבי על מצב אחד מהשבוע האחרון. לא מושלם, פשוט מספיק כדי להישאר בקשר.</p>
+      <form data-store="exercise-formula" autocomplete="off">
+        <div class="field"><label>גם: מה קורה לי?</label><textarea data-k="e1" placeholder="אני שמה לב ש…"></textarea></div>
+        <div class="field"><label>גם: מה חשוב לי?</label><textarea data-k="e2" placeholder="וגם חשוב לי…"></textarea></div>
+        <div class="field"><label>בקשה: מה יעזור לי בפועל?</label><textarea data-k="e3" placeholder="אז יעזור לי אם…"></textarea></div>
+        <div class="ex-foot">
+          <div class="saved-note" id="savedNote"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg> נשמר ✓</div>
+          <div class="ex-actions">
+            <button type="button" class="ex-btn ex-btn--ghost" id="copyBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg> <span>העתקת הניסוח שלי</span></button>
+            <button type="button" class="ex-btn" id="dlBtn"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M5 21h14"/></svg> <span>שמירה כקובץ</span></button>
+          </div>
+        </div>
+        <p class="ex-hint">מה שכתבת יישמר <b>אוטומטית בדפדפן הזה</b> גם אחרי רענון. כדי לשמור את זה לתמיד, העתיקי את הניסוח או שמרי אותו כקובץ.</p>
+      </form>
+    </div>
+  </section>
+
+  
+
+  <!-- ============ 4 · EXAMPLES ============ -->
+  <section class="chap chap--alt" id="examples" data-screen-label="דוגמאות">
+    <img class="side-bot sb-examples" src="assets/img/3.png" alt="" aria-hidden="true">
+    <div class="chap__num reveal"><span class="pageno">04</span>בזמן אמת</div>
+    <h2 class="chap__title reveal">איך זה נשמע בפועל?</h2>
+    <p class="lead reveal">כשמשהו בקשר מפעיל אותך, הנוסחה עוזרת <mark class="hl--sage hl">לא להאשים, לא להיעלם ולא להצטמצם</mark>. הקישי לפתוח כל מצב.</p>
+
+    <div class="acc">
+      <div class="acc__item reveal">
+        <button class="acc__btn" type="button">
+          <span class="acc__tag">בזוגיות</span>
+          <h4>כשיש שקט אחרי ששיתפתי משהו</h4>
+          <svg class="acc__chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc__panel"><div class="acc__inner">
+          <p class="qline">כשיש שקט אחרי שאני משתפת משהו, אני שמה לב שאני מתחילה להילחץ.
+חשוב לי לא להיסגר ולבדוק מה באמת קורה.
+אז יעזור לי אם תגיד לי אם אתה צריך רגע לחשוב, או אם יש משהו שחשוב שנדבר עליו.</p>
+          <div class="acc__short"><b>בקצרה</b>השקט הזה קצת מפעיל אותי. חשוב לי לא להמציא סיפור לבד בראש. אפשר שתגיד לי אם אתה פשוט צריך רגע?</div>
+        </div></div>
+      </div>
+
+      <div class="acc__item reveal">
+        <button class="acc__btn" type="button">
+          <span class="acc__tag">בחברות</span>
+          <h4>כשאני מקבלת תשובה קצרה</h4>
+          <svg class="acc__chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc__panel"><div class="acc__inner">
+          <p class="qline">כשאני מקבלת תשובה קצרה, אני שמה לב שאני מתחילה לפרש שאולי משהו לא בסדר.
+וגם חשוב לי לא להתרחק רק בגלל פרשנות שלי.
+אז אני רוצה לבדוק רגע, הכול בינינו בסדר, או שיש משהו שכדאי לדבר עליו?</p>
+          <div class="acc__short"><b>בקצרה</b>קלטתי שהתשובה שלך הייתה קצרה, ומשהו בי התחיל להילחץ. יכול להיות שזה בכלל לא קשור אליי, אבל רציתי לבדוק אם הכול בסדר בינינו.</div>
+        </div></div>
+      </div>
+
+      <div class="acc__item reveal">
+        <button class="acc__btn" type="button">
+          <span class="acc__tag">עם המשפחה</span>
+          <h4>כשכמה אנשים מדברים אליי יחד</h4>
+          <svg class="acc__chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc__panel"><div class="acc__inner">
+          <p class="qline">כשכמה אנשים מדברים אליי יחד, אני מרגישה שאני הולכת לאיבוד וקשה לי להישאר נוכחת.
+וגם באמת חשוב לי להיות איתכם ולא להתרחק.
+אז אני אקח כמה דקות שקט כדי לחזור לעצמי, ואז אחזור יותר פנויה.</p>
+          <div class="acc__short"><b>בקצרה</b>כשכולם מדברים אליי יחד, אני מתבלבלת וקשה לי להישאר איתכם. אני לוקחת כמה דקות שקט וחוזרת.</div>
+        </div></div>
+      </div>
+
+      <div class="acc__item reveal">
+        <button class="acc__btn" type="button">
+          <span class="acc__tag">בעבודה</span>
+          <h4>כשאני רוצה להסביר מה עוזר לי לתפקד</h4>
+          <svg class="acc__chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="acc__panel"><div class="acc__inner">
+          <p class="qline">קשה לי להתרכז כשיש הרבה רעש סביבי. אני רוצה לעשות את זה יסודי, אז יעזור לי זמן שקט למשימות שדורשות ריכוז.</p>
+          <div class="acc__short"><b>מול קולגה או מנהלת</b>כשיש הרבה משימות יחד, אני מתפזרת. יעזור לי שנחליט מה הכי דחוף ומה יכול לחכות, כדי שאעשה את זה ברמה הגבוהה שאני יכולה.</div>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="box box--mist reveal">
+      <div class="box__label">אם זה נשמע מתוסרט מדי</div>
+      <p>הנוסחה גמישה. אם "אני שמה לב שאני נהיית דרוכה" מרגיש מלאכותי, אפשר פשוט להגיד <b>"אני מתחילה להילחץ."</b> מה שחשוב זה שתנסחי אותה איך שמרגיש לך טבעי.</p>
+    </div>
+  </section>
+
+  
+
+  <!-- ============ 5 · NO WORDS ============ -->
+  <section class="chap" id="nowords" data-screen-label="כשאין מילים">
+    <img class="side-bot sb-nowords" src="assets/img/1.png" alt="" aria-hidden="true">
+    <div class="chap__num reveal"><span class="pageno">05</span>לשמירה</div>
+    <h2 class="chap__title reveal">כשאין לי עדיין מילים</h2>
+    <p class="lead reveal">קלפי משפטים קצרים לרגע שבו את רוצה להישאר בקשר, אבל עוד לא מוכנה לדבר. אפשר לצלם את העמוד הזה ולשמור.</p>
+    <div class="cards reveal">
+      <div class="scard"><span>אני מוצפת רגע, אבל אני לא מתעלמת.</span></div>
+      <div class="scard"><span>אני רוצה לענות, אבל לא מהמקום ההגנתי שאני בו עכשיו.</span></div>
+      <div class="scard"><span>אני לא נגדך. אני פשוט צריכה רגע לחזור לעצמי.</span></div>
+      <div class="scard"><span>אני רוצה להישאר בשיחה, אבל בקצב קצת יותר איטי.</span></div>
+    </div>
+  </section>
+
+  <!-- ============ 6 · SHELF ============ -->
+  <section class="chap chap--alt" id="shelf" data-screen-label="השליף">
+    <img class="side-bot sb-shelf" src="assets/img/3.png" alt="" aria-hidden="true">
+    <div class="chap__num reveal"><span class="pageno">06</span>שמרי קרוב</div>
+    <h2 class="chap__title reveal">השליף לרגע האמת</h2>
+    <p class="lead reveal">כל מה שצריך, בעמוד אחד. צלמי מסך ושמרי בטלפון, לרגע שבו אין מילים.</p>
+
+    <div class="shelf reveal">
+      <div class="shelf__eyebrow">שליף תקשורת בזמן הצפה</div>
+      <div class="shelf__title">כשאין לי מילים</div>
+      <div class="shelf__grid">
+        <div class="shelf__block">
+          <h5>בדיקת 10 שניות</h5>
+          <p>מה קורה לי? · האם אני דרוכה/נסגרת/מתגוננת? · האם אני מספיק כאן כדי לדבר? · מה יחזיר אותי לקרקע?</p>
+        </div>
+        <div class="shelf__block">
+          <h5>הנוסחה</h5>
+          <p class="q">גם: מה קורה לי עכשיו?</p>
+          <p class="q">גם: מה חשוב לי לשמור או להביא?</p>
+          <p class="q">בקשה: מה יעזור לי בפועל?</p>
+        </div>
+        <div class="shelf__block">
+          <h5>שלוש רמות</h5>
+          <div class="shelf__levels">
+            <div class="lvl"><b>קצר</b><p>"אני מוצפת רגע, אבל חשוב לי להישאר בקשר. אני צריכה כמה דקות."</p></div>
+            <div class="lvl"><b>בינוני</b><p>"כשזה קורה אני מתחילה להילחץ / להיסגר / להתגונן. וגם חשוב לי להישאר בקשר. אז יעזור לי אם…"</p></div>
+            <div class="lvl"><b>מלא</b><p>מה קורה לי + מה חשוב לי + מה יעזור לי בפועל.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- audio -->
+    <div class="audio reveal">
+      <div class="audio__icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg>
+      </div>
+      <div class="audio__b">
+        <div class="label">תרגול אודיו</div>
+        <h4>איך למצוא מילים כשמשהו בי מופעל</h4>
+        <p>תרגול קצר שיעזור לך לעצור, לזהות מה קורה בפנים, ולבחור משפט אחד פשוט להגיד בזמן אמת. אפשר להאזין בישיבה, בהליכה, או לפני שיחה רגישה.</p>
+      </div>
+      <a class="audio__btn" href="#" id="audioBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        להאזנה לתרגול
+      </a>
+    </div>
+  </section>
+
+  
+
+</main>
+
+<!-- ============ CLOSING ============ -->
+<section class="closing wrap" id="close" data-screen-label="סיום">
+  <div class="chap__num reveal"><span class="pageno">07</span>חשוב לזכור</div>
+  <h2 class="chap__title reveal" style="margin-bottom:34px">יש הבדל גדול בין שני המשפטים האלה</h2>
+  <div class="vs reveal">
+    <div class="vs__row bad"><span class="tagm">מקטין אותך</span>"סליחה, אני כזאת, אני יודעת שאני מגזימה."</div>
+    <div class="vs__row good"><span class="tagm">מחבר אותך</span>"זה מה שקורה לי, וזה מה שיעזור לי להישאר כאן."</div>
+  </div>
+  <p class="closing__final reveal">את לא צריכה להעלים את הרגישות שלך כדי להישאר בקשר.<br>את יכולה ללמוד <span class="mark">לתרגם אותה</span><br>למה שיעזור לך להישאר.</p>
+  <div class="closing__sig reveal">
+    <svg class="sun" style="margin:0 auto 14px" width="48" height="32" viewBox="0 0 62 42" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="31" y1="2" x2="31" y2="12"/><line x1="16" y1="6" x2="20" y2="14"/><line x1="46" y1="6" x2="42" y2="14"/><line x1="6" y1="17" x2="14" y2="21"/><line x1="56" y1="17" x2="48" y2="21"/><circle cx="31" cy="32" r="8"/></svg>
+    <b>רותם כהני</b> · פסיכולוגית קלינית<br>שיטת ע.ו.ג.ן · Anchor
+  </div>
+</section>
+
+<script>
+(function(){
+  /* ---- reveal on scroll (rect-based; reliable across environments) ---- */
+  var reveals=[].slice.call(document.querySelectorAll('.reveal'));
+  /* stagger: cascade siblings within the same parent */
+  var groups={};
+  reveals.forEach(function(el){
+    var p=el.parentNode; var id=p.__rid||(p.__rid=Math.random());
+    groups[id]=(groups[id]||0); el.__si=groups[id]++;
+    if(el.__si){ el.style.transitionDelay=Math.min(el.__si,5)*0.07+'s'; }
+  });
+  function revealCheck(){
+    var vh=window.innerHeight||document.documentElement.clientHeight;
+    for(var i=reveals.length-1;i>=0;i--){
+      var el=reveals[i];
+      var r=el.getBoundingClientRect();
+      if(r.top < vh*0.88 && r.bottom > 0){ el.classList.add('in'); reveals.splice(i,1); }
+    }
+  }
+  window.addEventListener('scroll',revealCheck,{passive:true});
+  window.addEventListener('resize',revealCheck);
+  revealCheck();
+  setTimeout(revealCheck,200);
+
+  /* ---- progress + dotnav active ---- */
+  var fill=document.getElementById('progress');
+  var dots=[].slice.call(document.querySelectorAll('.dotnav a'));
+  var secs=dots.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function onScroll(){
+    var h=document.documentElement;
+    var p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);
+    fill.style.width=(p*100)+'%';
+    var mid=h.scrollTop+window.innerHeight*0.4;
+    var idx=0;
+    secs.forEach(function(s,i){ if(s && s.offsetTop<=mid) idx=i; });
+    dots.forEach(function(d,i){ d.classList.toggle('active',i===idx); });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll); onScroll();
+
+  /* ---- accordion ---- */
+  document.querySelectorAll('.acc__btn').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var item=btn.closest('.acc__item');
+      var panel=item.querySelector('.acc__panel');
+      var open=item.classList.contains('open');
+      if(open){ panel.style.maxHeight=null; item.classList.remove('open'); }
+      else{ item.classList.add('open'); panel.style.maxHeight=panel.scrollHeight+'px'; }
+    });
+  });
+
+  /* ---- persistence: checkboxes ---- */
+  document.querySelectorAll('[data-store]').forEach(function(node){
+    var key='anchor-bonus3-'+node.getAttribute('data-store');
+    var data={};
+    try{ data=JSON.parse(localStorage.getItem(key)||'{}'); }catch(e){}
+    node.querySelectorAll('input[type=checkbox][data-k]').forEach(function(inp){
+      if(data[inp.dataset.k]) inp.checked=true;
+      inp.addEventListener('change',function(){
+        data[inp.dataset.k]=inp.checked;
+        localStorage.setItem(key,JSON.stringify(data));
+      });
+    });
+    var note=document.getElementById('savedNote');
+    var t;
+    node.querySelectorAll('textarea[data-k]').forEach(function(ta){
+      if(data[ta.dataset.k]!=null) ta.value=data[ta.dataset.k];
+      ta.addEventListener('input',function(){
+        data[ta.dataset.k]=ta.value;
+        localStorage.setItem(key,JSON.stringify(data));
+        if(note){ note.classList.add('show'); clearTimeout(t); t=setTimeout(function(){note.classList.remove('show');},1600); }
+      });
+    });
+  });
+
+  /* ---- exercise: copy & download ---- */
+  function exerciseText(){
+    function v(k){var t=document.querySelector('textarea[data-k='+k+']');return (t&&t.value.trim())||'…';}
+    return 'הניסוח שלי · גם + גם + בקשה\n\n'+
+      'גם: מה קורה לי?\n'+v('e1')+'\n\n'+
+      'גם: מה חשוב לי?\n'+v('e2')+'\n\n'+
+      'בקשה: מה יעזור לי בפועל?\n'+v('e3')+'\n\n, מתוך הבונוס "כשאין לי מילים" · רותם כהני';
+  }
+  function flash(btn,msg){
+    var span=btn.querySelector('span'); if(!span) return;
+    var orig=span.textContent; span.textContent=msg;
+    setTimeout(function(){span.textContent=orig;},1800);
+  }
+  var copyBtn=document.getElementById('copyBtn');
+  if(copyBtn) copyBtn.addEventListener('click',function(){
+    var txt=exerciseText();
+    function ok(){flash(copyBtn,'הועתק ✓');}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(ok).catch(function(){fallback(txt);ok();});
+    }else{fallback(txt);ok();}
+    function fallback(t){var ta=document.createElement('textarea');ta.value=t;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);}
+  });
+  var dlBtn=document.getElementById('dlBtn');
+  if(dlBtn) dlBtn.addEventListener('click',function(){
+    var blob=new Blob(['\ufeff'+exerciseText()],{type:'text/plain;charset=utf-8'});
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');a.href=url;a.download='הניסוח שלי.txt';
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+    setTimeout(function(){URL.revokeObjectURL(url);},1000);
+    flash(dlBtn,'נשמר ✓');
+  });
+
+  /* ---- audio placeholder ---- */
+  var ab=document.getElementById('audioBtn');
+  if(ab) ab.addEventListener('click',function(e){
+    e.preventDefault();
+    ab.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg> כאן ייכנס קובץ האודיו';
+  });
+})();
+</script>
+
+</body>
+</html>
